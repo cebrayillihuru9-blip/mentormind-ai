@@ -4,14 +4,19 @@ venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.coverage
 
 # Environment
 .env
 .env.*
+!.env.example
 
 # Frontend
 frontend/node_modules/
 frontend/dist/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
 node_modules/
 dist/
 
