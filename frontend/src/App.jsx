@@ -5,14 +5,40 @@
   Routes,
 } from "react-router-dom";
 
+import AdminDashboard from "./pages/AdminDashboard";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-function ProtectedRoute({ children }) {
-  const token = localStorage.getItem("token");
+function getStoredUser() {
+  try {
+    return JSON.parse(localStorage.getItem("user") || "{}");
+  } catch {
+    return {};
+  }
+}
 
-  return token ? children : <Navigate to="/login" replace />;
+function ProtectedRoute({ children, allowedRoles }) {
+  const token = localStorage.getItem("token");
+  const user = getStoredUser();
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (
+    allowedRoles &&
+    !allowedRoles.includes(user.role)
+  ) {
+    return (
+      <Navigate
+        to={user.role === "admin" ? "/admin" : "/dashboard"}
+        replace
+      />
+    );
+  }
+
+  return children;
 }
 
 function App() {
@@ -25,13 +51,34 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["user", "mentor"]}>
               <Dashboard />
             </ProtectedRoute>
           }
         />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="*"
+          element={
+            <Navigate
+              to={
+                getStoredUser().role === "admin"
+                  ? "/admin"
+                  : "/"
+              }
+              replace
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

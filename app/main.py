@@ -1,10 +1,10 @@
-﻿from fastapi import FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import Base, engine
 import app.models
 
-from app.routers import users, mentors, bookings, reviews, dashboard, ai
+from app.routers import users, mentors, bookings, reviews, dashboard, ai, admin
 
 Base.metadata.create_all(bind=engine)
 
@@ -39,6 +39,7 @@ app.include_router(bookings.router)
 app.include_router(reviews.router)
 app.include_router(dashboard.router)
 app.include_router(ai.router)
+app.include_router(admin.router)
 
 
 @app.get("/")

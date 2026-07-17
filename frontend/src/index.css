@@ -947,3 +947,255 @@ p {
     align-items: flex-start;
   }
 }
+
+.admin-sidebar {
+  background:
+    radial-gradient(
+      circle at 20% 5%,
+      rgba(117, 94, 255, 0.32),
+      transparent 30%
+    ),
+    #151426;
+}
+
+.admin-sidebar-label {
+  margin-top: 12px;
+  color: #9893bc;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.admin-sidebar-user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: auto;
+  padding: 15px;
+  border-radius: 13px;
+  background: #24223e;
+}
+
+.admin-sidebar-user span {
+  color: #aaa6c3;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.admin-sidebar .logout-button {
+  margin-top: 10px;
+}
+
+.admin-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border: 1px solid #e3e8f0;
+  border-radius: 17px;
+  padding: 18px 20px;
+  background: white;
+  box-shadow: 0 10px 28px rgba(37, 42, 72, 0.04);
+}
+
+.admin-user-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.admin-user-info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-user-info span {
+  color: #728096;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.admin-user-info small {
+  color: #6757e8;
+  font-weight: 800;
+}
+
+.admin-user-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.role-badge {
+  display: inline-flex;
+  border-radius: 100px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.role-badge.user {
+  color: #35506e;
+  background: #eaf0f6;
+}
+
+.role-badge.mentor {
+  color: #5c3ca4;
+  background: #efeaff;
+}
+
+.role-badge.admin {
+  color: #9a3412;
+  background: #fff1e8;
+}
+
+.admin-mentor-section {
+  margin-top: 45px;
+  scroll-margin-top: 20px;
+}
+
+.admin-mentor-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.admin-mentor-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #29364b;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.admin-mentor-form input,
+.admin-mentor-form textarea {
+  width: 100%;
+  border: 1px solid #dce2ec;
+  border-radius: 11px;
+  outline: none;
+  padding: 13px 14px;
+  color: #162033;
+  background: white;
+}
+
+.admin-mentor-form input:focus,
+.admin-mentor-form textarea:focus {
+  border-color: #6757e8;
+  box-shadow: 0 0 0 4px rgba(103, 87, 232, 0.1);
+}
+
+.admin-mentor-form textarea {
+  resize: vertical;
+}
+
+.admin-form-full {
+  grid-column: 1 / -1;
+}
+
+.admin-form-buttons {
+  display: flex !important;
+  align-items: center;
+  flex-direction: row !important;
+  gap: 10px !important;
+}
+
+@media (max-width: 900px) {
+  .admin-user-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-user-actions {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-mentor-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form-full {
+    grid-column: auto;
+  }
+
+  .admin-form-buttons {
+    align-items: stretch;
+    flex-direction: column !important;
+  }
+
+  .admin-form-buttons button {
+    width: 100%;
+  }
+}
+
+.clickable-stat {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.clickable-stat:hover {
+  transform: translateY(-2px);
+  border-color: #c8c1ff;
+}
+
+.clickable-stat.selected {
+  border-color: #6757e8;
+  box-shadow: 0 0 0 3px rgba(103, 87, 232, 0.1);
+}
+
+.role-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dce2ec;
+  border-radius: 100px;
+  padding: 9px 13px;
+  color: #59677c;
+  background: white;
+  font-weight: 800;
+}
+
+.filter-chip span {
+  display: grid;
+  min-width: 23px;
+  height: 23px;
+  place-items: center;
+  border-radius: 50%;
+  color: #59677c;
+  background: #edf0f5;
+  font-size: 11px;
+}
+
+.filter-chip.active {
+  border-color: #6757e8;
+  color: white;
+  background: #6757e8;
+}
+
+.filter-chip.active span {
+  color: #5143ba;
+  background: white;
+}

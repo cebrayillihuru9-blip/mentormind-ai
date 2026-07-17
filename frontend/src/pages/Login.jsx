@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 
@@ -42,7 +42,11 @@ function Login() {
         JSON.stringify(response.data.user || {})
       );
 
-      navigate("/dashboard");
+      navigate(
+        response.data.user?.role === "admin"
+          ? "/admin"
+          : "/dashboard"
+      );
     } catch (requestError) {
       setError(
         requestError.response?.data?.detail ||
